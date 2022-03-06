@@ -30,9 +30,8 @@ Analysis started by merging the datasets on the Primary Title and Movie columns.
 ***
 Additional data cleaning was conducted throughout the analysis as the business problems called for refined datasets.
 
-## Results
 
-Business Problem 1: Highest Grossing Genre
+## Business Problem 1: Highest Grossing Genre
 
 ![graph1](./images/Profit_vs_budget.png)
 
@@ -43,14 +42,14 @@ The above graphs shows movies that made a profit represented in green and movies
 The median profits via genre graph shows animation, fantasy, adventure, and sci-fi making the most profit. Based solely on profits, Microsoft would want to chose either an animated or fantasy film as their first choice.
 
 ***
-Business Problem 2: Highest ROI
+## Business Problem 2: Highest ROI
 
 ![graph3](./images/Medianratio_vs_genre.png)
 
 This graph shows animation coming in first place with profit ration of about 3:1, adventure in second place at 2.5:1, and sci-fi in third with 2.4:1. It seems that between profit and return on investment, animation would be the best choice for Microsoft's first movie.
 
 ***
-Business Problem 3: Runtime
+## Business Problem 3: Runtime
 
 ![graph4](./images/Prof_vs_Noprof_RT.png)
 
