@@ -1,84 +1,93 @@
-# Title
+# Microsoft Movie Analysis
 
-**Authors**: Student1, Student2
+**Author**: Sierra Mecalo-Schwigen
 
 ## Overview
 
-A one-paragraph overview of the project, including the business problem, data, methods, results and recommendations.
+With the growing success of the movie industry, Microsoft has made the decision to start their own movie studio. In order to assist them in determining which genre of movie to select for their first film, analysis of movie production data must be completed. The analysis of data from IMDB and The Numbers will be used to determine the success of movies in dollars spent vs. dollars earned. Results of the analysis can be used to strategically select which movie genre Microsoft should consider creating to optimize potential profits.
 
 ## Business Problem
-
-Summary of the business problem you are trying to solve, and the data questions that you plan to answer in order to solve them.
-
 ***
-Questions to consider:
-* What are the business's pain points related to this project?
-* How did you pick the data analysis question(s) that you did?
-* Why are these questions important from a business perspective?
+This analysis will be examining which movie genre provides the highest profit potential. The guiding questions to be used are:
 ***
+* What is the highest grossing genres?
+* Which of those genres provides the highest return on investment?
+* Is there a correlation between movie run time and ROl?
+***
+Using the results of the data found while exploring the above questions, three business recommendations will be provided to Microsoft for consideration when selecting their first film production.
 
 ## Data
-
-Describe the data being used for this project.
+***
+Scraped data from IMDB and The Numbers will be used for this analysis. These are reputable databases that provide information on the movie industry. The data scraped from IMDB includes movie title, runtime in minutes, and movie genre. The data scraped from The Numbers includes movie title, production budget, domestic gross revenue, and worldwide gross revenue. The Python library CPI will also be used to adjust for inflation using the Consumer Price Index.
 
 ***
-Questions to consider:
-* Where did the data come from, and how do they relate to the data analysis questions?
-* What do the data represent? Who is in the sample and what variables are included?
-* What is the target variable?
-* What are the properties of the variables you intend to use?
+Variables that will be explored include genres, production budget, release year, runtime minutes, and worldwide gross. 
+***
+Variables to be added for exploration are inflation adjusted production budget and worldwide gross, profit, and roi.
 ***
 
 ## Methods
-
-Describe the process for analyzing or modeling the data. For Phase 1, this will be descriptive analysis.
+***
+Analysis started by merging the datasets on the Primary Title and Movie columns. Then unnecessary columns were dropped from the dataframe. The production budget and worldwide gross columns were converted to float data types. For entries containing multipe genres, each entry was exploded into individual entries for each genre specified. Genres with less than 100 movies were then dropped. The dataframe was checked for movies missing information in the genres and worldwide gross columns, and those entries were removed from the dataframe. Columns were then added to determine profit and return on investment. The production budget, profit, and worldwide gross columns were adjusted for inflation to 2021.
 
 ***
-Questions to consider:
-* How did you prepare, analyze or model the data?
-* Why is this approach appropriate given the data and the business problem?
+Additional data cleaning was conducted throughout the analysis as the business problems called for refined datasets.
 ***
 
 ## Results
 
-Present your key results. For Phase 1, this will be findings from your descriptive analysis.
-
+Business Problem 1: Highest Grossing Genre
 ***
-Questions to consider:
-* How do you interpret the results?
-* How confident are you that your results would generalize beyond the data you have?
+![graph1](./images/Profit_vs_budget.png)
+***
+The above graphs shows movies that made a profit represented in green and movies that didn't in purple. While there is a relationship between production budget and profit earned, it does not appear to be a strong one. This would require further investigation, which I will do by looking at genres.
+***
+![graph2](./images/MedProf_vs_budget.png)
+***
+The median profits via genre graph shows animation, fantasy, adventure, and sci-fi making the most profit. Based solely on profits, Microsoft would want to chose either an animated or fantasy film as their first choice.
 ***
 
-Here is an example of how to embed images from your sub-folder:
+Business Problem 2: Highest ROI
+***
+![graph3](./images/Medianratio_vs_genre.png)
+***
+This graph shows animation coming in first place with profit ration of about 3:1, adventure in second place at 2.5:1, and sci-fi in third with 2.4:1. It seems that between profit and return on investment, animation would be the best choice for Microsoft's first movie.
+***
 
-### Visual 1
-![graph1](./images/viz1.png)
+Business Problem 3: Runtime
+***
+![graph4](./images/Prof_vs_Noprof_RT.png)
+***
+The above graph shows a right skewed distribution. Runtimes of 90 to 120 minutes for both profitable and non-profitable movies appear to be the most successful. It would be helpful to look strictly at Animation movies, as those have showen to provide the highest profit and return on investment.
+***
+![graph5](./images/Prof_vs_Noprof_Ani_RT.png)
+***
+Looking strictly at Animation movies, the above graph displays a slightly left-skewed distribution. Based on the above graph, a recommendation of movie runtimes between 90 to 98 minutes would be made.
+***
 
 ## Conclusions
 
-Provide your conclusions about the work you've done, including any limitations or next steps.
-
+Based on the provided data analysis, the following is recommended:
 ***
-Questions to consider:
-* What would you recommend the business do as a result of this work?
-* What are some reasons why your analysis might not fully solve the business problem?
-* What else could you do in the future to improve this project?
+* For maximum potential profit: Animation or Fantasy genres
+* For maximum potential return on investment: Animation genre
+* Ideal runtime in minutes: 90-98
+***
+Microsoft Movie Studio is just beginning so further research may be necessary. This analysis aims to provide Microsoft with strong business recommendations for their first production but it does not cover all potential areas of interests. Further suggested analysis would include optimal release month, success rates of various directors and actors, and impact on movie success by critic reviews.
 ***
 
 ## For More Information
 
 Please review our full analysis in [our Jupyter Notebook](./dsc-phase1-project-template.ipynb) or our [presentation](./DS_Project_Presentation.pdf).
 
-For any additional questions, please contact **name & email, name & email**
+For any additional questions, please contact **Sierra Mecalo-Schwigen, sierra.m.schwigen@icloud.com**
 
 ## Repository Structure
-
-Describe the structure of your repository and its contents, for example:
 
 ```
 ├── README.md                           <- The top-level README for reviewers of this project
 ├── dsc-phase1-project-template.ipynb   <- Narrative documentation of analysis in Jupyter notebook
-├── DS_Project_Presentation.pdf         <- PDF version of project presentation
+├── DS_Phase1_Project_Presentation.pdf         <- PDF version of project presentation
 ├── data                                <- Both sourced externally and generated from code
 └── images                              <- Both sourced externally and generated from code
 ```
