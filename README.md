@@ -1,71 +1,93 @@
-# Phase 1 Project Template - Minimum Viable Product (MVP)
+# Microsoft Movie Analysis
 
-![blueprint](images/blueprint.png)
+**Author**: Sierra Mecalo-Schwigen
 
-This repository is like a blueprint, providing structure for your first End of Phase Project. We suggest you base your Phase 1 project off of this repository so you can focus less on formatting and organization, and more on the _analysis and communication skills_ that will support your progress through the course. This template is designed to make your project portfolio-ready in order to impress the future employers who will review it. 
+## Overview
 
-## Repository Contents
+With the growing success of the movie industry, Microsoft has made the decision to start their own movie studio. In order to assist them in determining which genre of movie to select for their first film, analysis of movie production data must be completed. The analysis of data from IMDB and The Numbers will be used to determine the success of movies in dollars spent vs. dollars earned. Results of the analysis can be used to strategically select which movie genre Microsoft should consider creating to optimize potential profits.
 
-Below is a list of the contents of this repository - instructions for using them are in the next section.
+## Business Problem
+***
+This analysis will be examining which movie genre provides the highest profit potential. The guiding questions to be used are:
+***
+* What is the highest grossing genres?
+* Which of those genres provides the highest return on investment?
+* Is there a correlation between movie run time and ROl?
+***
+Using the results of the data found while exploring the above questions, three business recommendations will be provided to Microsoft for consideration when selecting their first film production.
 
-- `README.md`: The README for this repo branch explaining it's contents - you're reading it now
-- `TEMPLATE_README.md`: An example of a project README that provides a brief overview of your whole project
-- `dsc-phase1-project-template.ipynb`: A starter Jupyter Notebook with headings, code examples and guiding questions
-- `DS_Project_Presentation_Template.pdf`: A starter slide deck presenting your project - here is an [editable version](https://docs.google.com/presentation/d/1PaiH1bleXnhiPjTPsAXQSiAK0nkaRlseQIr_Yb-0mz0/copy)
-- `data` folder: A folder for the data you reference with your code
-- `images` folder: A folder for the images you reference in your files 
-- `.gitignore`: A hidden file that tells git to not track certain files and folders
-
-## Instructions For Using This Repository
-
-### Fork This Repository
-
-**For a group project**, have only one team member do these steps:
-
-1. Fork this repository to your personal account
-   - In GitHub, go to this repository and click the "Fork" button in the upper right
-   
-2. Change the name of your fork of this repo to a _descriptive_ name of your choosing
-   - In GitHub, go to your fork of this repo -> "Settings" -> "Options" -> "Repository Name" -> "Rename"
-   - Make the name descriptive, since potential employers will read it. Ex: "Microsoft-Movie-Analysis" is better than "Project-1"
-
-3. Use `git clone` to clone your fork of this repo to your local computer
-
-4. **For a group project**, add team members as collaborators to your fork of this repo
-   - In GitHub, go to your fork of this repo -> "Settings" -> "Manage Access" -> "Invite Teams or People"
-   - Add your project team members as collaborators & send them the repo GitHub URL
-
-### Work In Your Fork Of This Repository
-
-- Work in the repo clone that you created on your local machine
-- Start writing and coding in the Jupyter Notebook `dsc-phase1-project-template.ipynb`
-- Fill in the README template in `TEMPLATE_README.md`
-- Use `git add`, `git commit`, and `git push` often to update your repo in GitHub
-   - For a refresher on how to do this and why it's important, review Topic 2: Bash and Git
-
-### Use The Slide Template
-
-1. Go to [this link](https://docs.google.com/presentation/d/1PaiH1bleXnhiPjTPsAXQSiAK0nkaRlseQIr_Yb-0mz0/copy) to make an editable copy of the slide deck in your own Google Drive account
-2. Go to "Slide," select "Change Theme," and pick a theme you like so your presentation doesn't look like everyone else's
-3. **For a group project**, click the "Share" button and add your teammates as editors
-
-### Tidy Up Your Project
-
-- Change the file name of the Jupyter Notebook (`dsc-phase1-project-template.ipynb`) to something more descriptive
-- Save an appropriately-named PDF version of your slide deck to the repository
-- Rename the template readme you've been working in by running `git mv TEMPLATE_README.md README.md`
-- Delete unnecessary files from the repo using `git rm`
-   - The presentation PDF: `DS_Project_Presentation_Template.pdf`
-   - This README file: `README.md`
-   - Any unused data files in the `data` folder
-   - Any unused images in the `images` folder
-
-### Submit Your Project
-
-To submit your project, please follow the instructions in the "Project Submission & Review" page in the Milestones course.
+## Data
+***
+Scraped data from IMDB and The Numbers will be used for this analysis. These are reputable databases that provide information on the movie industry. The data scraped from IMDB includes movie title, runtime in minutes, and movie genre. The data scraped from The Numbers includes movie title, production budget, domestic gross revenue, and worldwide gross revenue. The Python library CPI will also be used to adjust for inflation using the Consumer Price Index.
 
 ***
-### Notes
+Variables that will be explored include genres, production budget, release year, runtime minutes, and worldwide gross. 
+***
+Variables to be added for exploration are inflation adjusted production budget and worldwide gross, profit, and roi.
+***
 
-- The visualizations in the notebook use best practices for visualization that you should try to emulate. For example, they have clear axes, descriptive titles, and appropriate number formatting
-- The `dsc-phase1-project-template.ipynb` is intended to be the _final version_ of your project. The first notebook you create will not look like this. You are encouraged to start with a very disorderly notebook and clean it as you go
+## Methods
+***
+Analysis started by merging the datasets on the Primary Title and Movie columns. Then unnecessary columns were dropped from the dataframe. The production budget and worldwide gross columns were converted to float data types. For entries containing multipe genres, each entry was exploded into individual entries for each genre specified. Genres with less than 100 movies were then dropped. The dataframe was checked for movies missing information in the genres and worldwide gross columns, and those entries were removed from the dataframe. Columns were then added to determine profit and return on investment. The production budget, profit, and worldwide gross columns were adjusted for inflation to 2021.
+
+***
+Additional data cleaning was conducted throughout the analysis as the business problems called for refined datasets.
+***
+
+## Results
+
+Business Problem 1: Highest Grossing Genre
+***
+![graph1](./images/Profit_vs_budget.png)
+***
+The above graphs shows movies that made a profit represented in green and movies that didn't in purple. While there is a relationship between production budget and profit earned, it does not appear to be a strong one. This would require further investigation, which I will do by looking at genres.
+***
+![graph2](./images/MedProf_vs_budget.png)
+***
+The median profits via genre graph shows animation, fantasy, adventure, and sci-fi making the most profit. Based solely on profits, Microsoft would want to chose either an animated or fantasy film as their first choice.
+***
+
+Business Problem 2: Highest ROI
+***
+![graph3](./images/Medianratio_vs_genre.png)
+***
+This graph shows animation coming in first place with profit ration of about 3:1, adventure in second place at 2.5:1, and sci-fi in third with 2.4:1. It seems that between profit and return on investment, animation would be the best choice for Microsoft's first movie.
+***
+
+Business Problem 3: Runtime
+***
+![graph4](./images/Prof_vs_Noprof_RT.png)
+***
+The above graph shows a right skewed distribution. Runtimes of 90 to 120 minutes for both profitable and non-profitable movies appear to be the most successful. It would be helpful to look strictly at Animation movies, as those have showen to provide the highest profit and return on investment.
+***
+![graph5](./images/Prof_vs_Noprof_Ani_RT.png)
+***
+Looking strictly at Animation movies, the above graph displays a slightly left-skewed distribution. Based on the above graph, a recommendation of movie runtimes between 90 to 98 minutes would be made.
+***
+
+## Conclusions
+
+Based on the provided data analysis, the following is recommended:
+***
+* For maximum potential profit: Animation or Fantasy genres
+* For maximum potential return on investment: Animation genre
+* Ideal runtime in minutes: 90-98
+***
+Microsoft Movie Studio is just beginning so further research may be necessary. This analysis aims to provide Microsoft with strong business recommendations for their first production but it does not cover all potential areas of interests. Further suggested analysis would include optimal release month, success rates of various directors and actors, and impact on movie success by critic reviews.
+***
+
+## For More Information
+
+Please review our full analysis in [our Jupyter Notebook](./dsc-phase1-project-template.ipynb) or our [presentation](./DS_Phase1_Project_Presentation.pdf).
+
+For any additional questions, please contact **Sierra Mecalo-Schwigen, sierra.m.schwigen@icloud.com**
+
+## Repository Structure
+
+```
+├── README.md                           <- The top-level README for reviewers of this project
+├── dsc-phase1-project-template.ipynb   <- Narrative documentation of analysis in Jupyter notebook
+├── DS_Phase1_Project_Presentation.pdf         <- PDF version of project presentation
+├── data                                <- Both sourced externally and generated from code
+└── images                              <- Both sourced externally and generated from code
+```
