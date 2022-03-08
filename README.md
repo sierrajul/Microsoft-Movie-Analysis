@@ -29,22 +29,23 @@ Analysis started by merging the datasets on the Primary Title and Movie columns.
 
 ***
 Additional data cleaning was conducted throughout the analysis as the business problems called for refined datasets.
+* Initial dataframe contained 6740 entries
+* Dataframe excluding non-profitable movies contained 4549 entries
+* Dataframe of profitable movies after removing missing runtime data contained 4261 entries
+* Dataframe only including profitable Animation genre movies contained 106 entries
+
 
 
 ## Business Problem 1: Highest Grossing Genre
 
-![graph1](./images/Profit_vs_budget.png)
+![graph1](./images/Adj_Prof_v_Genre.png)
 
-The above graphs shows movies that made a profit represented in green and movies that didn't in purple. While there is a relationship between production budget and profit earned, it does not appear to be a strong one. This would require further investigation, which I will do by looking at genres.
-
-![graph2](./images/MedProf_vs_budget.png)
-
-The median profits via genre graph shows animation, fantasy, adventure, and sci-fi making the most profit. Based solely on profits, Microsoft would want to chose either an animated or fantasy film as their first choice.
+The median profits via genre graph shows animation, fantasy, adventure, and sci-fi making the most profit. Based solely on profits, Microsoft would want to chose either an animated or adventure film as their first choice.
 
 ***
 ## Business Problem 2: Highest ROI
 
-![graph3](./images/Medianratio_vs_genre.png)
+![graph3](./images/Medianratio_vs_genre_updated.png)
 
 This graph shows animation coming in first place with profit ration of about 3:1, adventure in second place at 2.5:1, and sci-fi in third with 2.4:1. It seems that between profit and return on investment, animation would be the best choice for Microsoft's first movie.
 
@@ -63,7 +64,7 @@ Looking strictly at Animation movies, the above graph displays a slightly left-s
 ## Conclusions
 
 Based on the provided data analysis, the following is recommended:
-* For maximum potential profit: Animation or Fantasy genres
+* For maximum potential profit: Animation or Adventure genres
 * For maximum potential return on investment: Animation genre
 * Ideal runtime in minutes: 90-98
 
